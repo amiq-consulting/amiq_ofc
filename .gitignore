@@ -1,0 +1,7 @@
+*dvt_build.log
+*.settings/
+*.log
+*.history
+*.key
+*xcelium.d/
+amiq_python_ofc/*.pyc

@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>amiq_ofc_buffers &mdash; AMIQ OFC 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AMIQ OFC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_python_server.html">AMIQ OFC Python Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_python_fpga_connector.html">AMIQ OFC Python FPGA Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_buffers.html">AMIQ OFC Buffers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_item.html">AMIQ OFC Item</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AMIQ OFC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>amiq_ofc_buffers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for amiq_ofc_buffers</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   (C) Copyright 2021 AMIQ Consulting</span>
+<span class="sd">  </span>
+<span class="sd">   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="sd">   you may not use this file except in compliance with the License.</span>
+<span class="sd">   You may obtain a copy of the License at</span>
+<span class="sd">  </span>
+<span class="sd">   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="sd">  </span>
+<span class="sd">   Unless required by applicable law or agreed to in writing, software</span>
+<span class="sd">   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="sd">   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="sd">   See the License for the specific language governing permissions and</span>
+<span class="sd">   limitations under the License.</span>
+<span class="sd">  </span>
+<span class="sd">   MODULE:      amiq_ofc_buffers</span>
+<span class="sd">   PROJECT:     Amiq Open-Source Framework for Co-Emulation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">##########################################################################################################################    </span>
+<span class="c1">####################################################### Imports ##########################################################</span>
+<span class="c1">##########################################################################################################################</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># from pynq import allocate #requires pynq version 2.5</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c1">##########################################################################################################################    </span>
+<span class="c1">################################################# DMA buffers Class ######################################################</span>
+<span class="c1">##########################################################################################################################</span>
+<div class="viewcode-block" id="amiq_ofc_buffers"><a class="viewcode-back" href="../amiq_ofc_buffers.html#amiq_ofc_buffers.amiq_ofc_buffers">[docs]</a><span class="k">class</span> <span class="nc">amiq_ofc_buffers</span><span class="p">:</span>     
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     This class is used for defining and allocating the buffers used for DMA acceses</span>
+
+<span class="sd">     Each dma has two channels: send and recv, therefore each dma needs two corresponding buffers.</span>
+<span class="sd">     Each buffer may have different dimensions, based on the PL DMA IPs </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            The constructor will initialize both send and receive buffers to None.</span>
+<span class="sd">            To allocate the buffers use the allocate_buffers() function</span>
+<span class="sd">            To free the buffers use the free_buffers() function</span>
+<span class="sd">            </span>
+<span class="sd">            @see self.allocate_buffers</span>
+<span class="sd">            @see self.free_buffers</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="c1"># Buffer used for sending to the DMA IP</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># Buffer used for receiving from the DMA IP</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recv</span> <span class="o">=</span> <span class="kc">None</span>
+    
+<div class="viewcode-block" id="amiq_ofc_buffers.allocate_buffers"><a class="viewcode-back" href="../amiq_ofc_buffers.html#amiq_ofc_buffers.amiq_ofc_buffers.allocate_buffers">[docs]</a>    <span class="k">def</span> <span class="nf">allocate_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">send_shape</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">send_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">recv_shape</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">recv_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            Allocate buffers.</span>
+<span class="sd">            If an argument is not given, then the specific shape/data type will not be modified.</span>
+<span class="sd">            </span>
+<span class="sd">            @param send_shape: Represents the number of items that can be sent using a single DMA access</span>
+<span class="sd">            @type  send_shape: int</span>
+<span class="sd">            @param send_dtype: Represents the dimension of a single &quot;send item&quot; and can be defined using numpy (eg. np.uint32)</span>
+<span class="sd">            @type  send_dtype: data type</span>
+<span class="sd">            </span>
+<span class="sd">            @param recv_shape: Represents the number of items that can be received using a single DMA access</span>
+<span class="sd">            @type  recv_shape: int</span>
+<span class="sd">            @param recv_dtype: Represents the dimension of a single &quot;receive item&quot; and can be defined using numpy (eg. np.uint32)</span>
+<span class="sd">            @type  recv_dtype: data type</span>
+<span class="sd">        &quot;&quot;&quot;</span> 
+        
+        <span class="k">if</span><span class="p">(</span><span class="n">send_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">send_dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;The &lt;send buffer&gt; has already been allocated with dimensions:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">dtype</span><span class="p">]))</span>
+                
+            <span class="bp">self</span><span class="o">.</span><span class="n">send</span> <span class="o">=</span> <span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">send_shape</span><span class="p">,),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">send_dtype</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">send_allocated</span> <span class="o">=</span> <span class="kc">True</span> 
+            
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Buffer for DMA SEND channel is allocated with dimensions: shape=</span><span class="si">{}</span><span class="s1">, dtype=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+            
+        <span class="k">if</span><span class="p">(</span><span class="n">recv_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">recv_dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;The &lt;recv buffer&gt; has already been allocated with dimensions:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="o">.</span><span class="n">dtype</span><span class="p">]))</span>
+                
+            <span class="bp">self</span><span class="o">.</span><span class="n">recv</span> <span class="o">=</span> <span class="n">allocate</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">recv_shape</span><span class="p">,),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">recv_dtype</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recv_allocated</span> <span class="o">=</span> <span class="kc">True</span> 
+            
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Buffer for DMA RECV channel is allocated with dimensions: shape=</span><span class="si">{}</span><span class="s1">, dtype=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span></div>
+            
+<div class="viewcode-block" id="amiq_ofc_buffers.free_buffers"><a class="viewcode-back" href="../amiq_ofc_buffers.html#amiq_ofc_buffers.amiq_ofc_buffers.free_buffers">[docs]</a>    <span class="k">def</span> <span class="nf">free_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">free_send</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">free_recv</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">             Free buffers</span>
+<span class="sd">             </span>
+<span class="sd">             @param free_send: Indicates if the buffer for sendchannel will be freed.</span>
+<span class="sd">             @type  free_send: boolean</span>
+<span class="sd">             @param free_recv: Indicates if the buffer for recvchannel will be freed.</span>
+<span class="sd">             @type  free_recv: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">free_send</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">xlnk</span><span class="o">.</span><span class="n">cma_free</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span> <span class="p">)</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">send</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">free_recv</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">xlnk</span><span class="o">.</span><span class="n">cma_free</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span> <span class="p">)</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">recv</span> <span class="o">=</span> <span class="kc">None</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, AMIQ Consulting
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

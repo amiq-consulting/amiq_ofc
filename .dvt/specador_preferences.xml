@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE spechtml PUBLIC "-//DVT//specador-preferences" "specador-preferences.dtd">
+<spechtml version="6">
+    <!-- Location where documentation will be generated. Relative paths are solved as relative to the current directory. -->
+    <location>docs/sv_ofc/</location>
+    <!-- Delete all files in the destination directory before generating documentation. -->
+    <clean-location>true</clean-location>
+    <!-- Title. -->
+    <title>AMIQ SV OFC Documentation</title>
+    <!-- The content of the overview file will be embedded in the first page. Relative paths are solved as relative to the current directory. -->
+    <overview-file>/home/ioacri/git/amiq_ofc/amiq_sv_ofc/README.txt</overview-file>
+    <!-- The user defined navigation menu (HTML or XML format) will be embedded in the main menu. Relative paths are solved as relative to the current directory. Default: none. -->
+    <user-defined-html> </user-defined-html>
+    <!-- Generate documentation only for files physically located under project root. Relevant for GUI mode only. -->
+    <just-project-files>true</just-project-files>
+    <!-- Generate UML inheritance diagram for each class. -->
+    <export-uml-inheritance-diagram>true</export-uml-inheritance-diagram>
+    <!-- Generate UML inheritance diagram for each package. -->
+    <export-uml-package-inheritance-diagram>true</export-uml-package-inheritance-diagram>
+    <!-- Generate UML collaboration diagram for each class, struct, or unit. -->
+    <export-uml-collaboration-diagram>true</export-uml-collaboration-diagram>
+    <!-- Generate UML direct associations diagram for each class, struct, or unit. -->
+    <export-uml-direct-associations-diagram>true</export-uml-direct-associations-diagram>
+    <!-- Use orthogonal edge routing for class diagrams. -->
+    <orthogonal-class-diagrams>true</orthogonal-class-diagrams>
+    <!-- Generate design block diagram for each module, entity. -->
+    <export-design-block-diagram>true</export-design-block-diagram>
+    <!-- Generate design flow diagram for each module, entity. -->
+    <export-design-flow-diagram>true</export-design-flow-diagram>
+    <!-- Generate design schematic diagram for each module, entity. -->
+    <export-design-schematic-diagram>true</export-design-schematic-diagram>
+    <!-- Generate finite-state machine diagrams for all state variables found in the module, entity. -->
+    <export-fsm-diagrams>true</export-fsm-diagrams>
+    <!-- Generate interfaces documentation. -->
+    <export-vlog-interfaces>false</export-vlog-interfaces>
+    <!-- Generate programs documentation. -->
+    <export-vlog-programs>false</export-vlog-programs>
+    <!-- Generate specific package documentation. -->
+    <export-vlog-package>amiq_ofc_pkg</export-vlog-package>
+    <!-- Generate covergroups documentation. -->
+    <export-vlog-covergroups>false</export-vlog-covergroups>
+</spechtml>

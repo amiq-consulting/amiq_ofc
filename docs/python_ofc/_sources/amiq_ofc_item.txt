@@ -1,0 +1,6 @@
+AMIQ OFC Item
+=============
+
+.. autoclass:: amiq_ofc_item.amiq_ofc_item
+	:members:
+	

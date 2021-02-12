@@ -1,0 +1,6 @@
+AMIQ OFC Python FPGA Connector
+==============================
+
+.. autoclass:: amiq_ofc_python_fpga_connector.amiq_ofc_python_fpga_connector
+	:members:
+	

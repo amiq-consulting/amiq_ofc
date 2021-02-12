@@ -1,0 +1,5 @@
+AMIQ OFC Item
+=============
+
+.. automodule:: amiq_ofc_item
+	:members:

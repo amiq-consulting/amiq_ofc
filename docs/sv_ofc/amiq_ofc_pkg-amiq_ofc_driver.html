@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>AMIQ SV OFC Documentation</title>
+
+	<meta name="author" content="ioacri">
+	<meta name="description" content="AMIQ SV OFC Documentation">
+	<meta name="generator" content="Specador. Copyright (C) 2005-2021 AMIQ EDA ">
+	<meta name="keywords" content="SystemVerilog, HTML Documentation, Specador, AMIQ EDA, AMIQ SV OFC Documentation">
+
+	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="css/content.css" rel="stylesheet">
+	<link href="css/fonts.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container-fluid">
+<!-- ========= Title ======= -->
+<h2>class      		<a href="summary-amiq_ofc_pkg.html">amiq_ofc_pkg</a>
+:: amiq_ofc_driver
+</h2>
+
+
+<!-- ========= Top Buttons ======= -->
+		<br>
+		<div class="btn-group">
+				<button data-scroll=#parameters type="button" class="btn btn-default">Parameters <span class="badge">1</span></button>
+	<button data-scroll=#constructor type="button" class="btn btn-default">Constructor <span class="badge">1</span></button>
+	<button data-scroll=#typedefs type="button" class="btn btn-default">Typedefs <span class="badge">1</span></button>
+	
+	
+	<button data-scroll=#variables type="button" class="btn btn-default">Variables <span class="badge">2</span></button>
+	
+	
+	
+	<button data-scroll=#functions type="button" class="btn btn-default">Functions <span class="badge">3</span></button>
+	<button data-scroll=#tasks type="button" class="btn btn-default">Tasks <span class="badge">1</span></button>
+
+	<button data-scroll=#inheritance_diagram_svg type="button" class="btn btn-default">Inheritance Diagram</button>
+	<button data-scroll=#collaboration_diagram_svg type="button" class="btn btn-default">Collaboration Diagram</button>
+	<button data-scroll=#direct_associations_diagram_svg type="button" class="btn btn-default">Direct Associations Diagram</button>
+
+		</div>
+		<br><br>
+
+<!-- ========= Inheritance Tree ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#inheritance_tree">
+			<h4 class="panel-title">
+					Class Hierarchy <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+				<div id="inheritance_tree" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<ul class="class-hierarchy">
+							<li>
+							   uvm_void <b>
+</b> 
+							</li>
+							<li>
+							   uvm_object <b>
+</b> 		extends <b>uvm_void</b>
+
+							</li>
+							<li>
+							   uvm_report_object <b>
+</b> 		extends <b>uvm_object</b>
+
+							</li>
+							<li>
+							   uvm_component <b>
+</b> 		extends <b>uvm_report_object</b>
+
+							</li>
+							<li>
+							   uvm_driver <b>
+</b> 		extends <b>uvm_component</b>
+
+							</li>
+							<li>
+							   amiq_ofc_driver <b>
+    #(
+      
+  type IF
+      = uvm_driver
+    )
+</b> 		extends <b>IF</b>
+
+							</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+<!-- ========= Description ======= -->
+	<div class="comment"><p class='paragraph_wrapper'><section class='section_wrapper'>The OFC driver sends items to the amiq_ofc_server_connector as string messages instead of sequence items.</section><section class='section_wrapper'> Use this class to replace the original UVM drivers. You can replace them using UVM factory and parameterizing the amiq_ofc_driver</section></p><p class='paragraph_wrapper'><dt class='def_name_wrapper'>Arguments:</dt><dd class='def_description_wrapper'><section class='section_wrapper'>IF  -&gt; Give the type of the driver you want to replace</section></dd></p></div>
+
+<!-- ========= Parameters ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#parameters">
+			<h4 class="panel-title">
+					Parameters <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+					<ul id="parameters" class="list-group panel-collapse collapse in">
+					<li class="list-group-item">
+						<a name="parameter_IF"></a>
+						<span class="signature">
+
+  type IF
+      = uvm_driver
+
+
+						</span>
+
+					</li>
+			</ul>
+
+	</div>
+
+<!-- ========= Constructor ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#constructor">
+			<h4 class="panel-title">
+					Constructor <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+					<ul id="constructor" class="list-group panel-collapse collapse in">
+					<li class="list-group-item">
+						<a name="constructor_new"></a>
+						<span class="signature">
+
+	 function 	
+
+	<b>		new
+</b>(	string
+name = "amiq_sr_acc_driver",
+	uvm_component
+parent)
+
+
+						</span>
+	<div class="comment"><p class='paragraph_wrapper'><section class='section_wrapper'>The constructor takes care of getting the ofc_server_connector and ofc_driver_config</section></p></div>
+
+					</li>
+			</ul>
+
+	</div>
+
+<!-- ========= Typedefs ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#typedefs">
+			<h4 class="panel-title">
+					Typedefs <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+					<ul id="typedefs" class="list-group panel-collapse collapse in">
+					<li class="list-group-item">
+						<a name="typedef_type_id"></a>
+						<span class="signature">
+
+	 <b>		type_id
+</b>
+
+		-> uvm_component_registry#(amiq_ofc_driver#(IF))
+	
+
+
+						</span>
+
+					</li>
+			</ul>
+
+	</div>
+
+<!-- ========= Structs ======= -->
+
+<!-- ========= Enums ======= -->
+
+<!-- ========= Variables ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#variables">
+			<h4 class="panel-title">
+					Variables <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+					<ul id="variables" class="list-group panel-collapse collapse in">
+					<li class="list-group-item">
+						<a name="variable_con"></a>
+						<span class="signature">
+
+	<a href="amiq_ofc_pkg-amiq_ofc_server_connector.html">amiq_ofc_server_connector</a>
+ <b>		con
+</b>
+
+
+						</span>
+	<div class="comment"><p class='paragraph_wrapper'><section class='section_wrapper'>The amiq_ofc_server_connector is needed in order to send items to the server</section></p></div>
+
+					</li>
+					<li class="list-group-item">
+						<a name="variable_ofc_driver_config"></a>
+						<span class="signature">
+
+	<a href="amiq_ofc_pkg-amiq_ofc_driver_config.html">amiq_ofc_driver_config</a>
+ <b>		ofc_driver_config
+</b>
+
+
+						</span>
+	<div class="comment"><p class='paragraph_wrapper'><section class='section_wrapper'>The amiq_ofc_driver is configured using the ofc_driver_config</section></p></div>
+
+					</li>
+			</ul>
+
+	</div>
+
+<!-- ========= Events ======= -->
+
+<!-- ========= Covergroups ======= -->
+
+<!-- ========= Constraints ======= -->
+
+<!-- ========= Functions ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#functions">
+			<h4 class="panel-title">
+					Functions <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+					<ul id="functions" class="list-group panel-collapse collapse in">
+					<li class="list-group-item">
+						<a name="function_get_object_type"></a>
+						<span class="signature">
+
+	virtual  function 	uvm_object_wrapper
+
+	<b>		get_object_type
+</b>()
+
+
+						</span>
+
+					</li>
+					<li class="list-group-item">
+						<a name="function_get_type"></a>
+						<span class="signature">
+
+	static  function 	<a href="amiq_ofc_pkg-amiq_ofc_driver.html#typedef_type_id">type_id</a>
+
+	<b>		get_type
+</b>()
+
+
+						</span>
+
+					</li>
+					<li class="list-group-item">
+						<a name="function_item2string"></a>
+						<span class="signature">
+
+	 function 	string
+
+	<b>		item2string
+</b>(	uvm_object
+req)
+
+
+						</span>
+	<div class="comment"><p class='paragraph_wrapper'><section class='section_wrapper'>Function that converts items into strings based on their pack function</section></p></div>
+
+					</li>
+			</ul>
+
+	</div>
+
+<!-- ========= Tasks ======= -->
+	<div class="panel panel-default">
+		<div class="panel-heading" data-toggle="collapse" data-target="#tasks">
+			<h4 class="panel-title">
+					Tasks <span class="glyphicon glyphicon-chevron-down"></span>
+			</h4>
+		</div>
+					<ul id="tasks" class="list-group panel-collapse collapse in">
+					<li class="list-group-item">
+						<a name="task_run_phase"></a>
+						<span class="signature">
+
+	virtual  task 	
+
+	<b>		run_phase
+</b>(	uvm_phase
+phase)
+
+
+						</span>
+	<div class="comment"><p class='paragraph_wrapper'><section class='section_wrapper'>The run_phase extracts items from the sequence Converts them into strings And sends them to the ofc_server_connector</section></p></div>
+
+					</li>
+			</ul>
+
+	</div>
+
+<!-- ========= Diagrams ======= -->
+	<div class="panel panel-default">
+		<div id="inheritance_diagram_svg_container" class="panel-heading" data-toggle="collapse" data-target="#inheritance_diagram_svg">
+			<h4 class="panel-title">
+					Inheritance Diagram <span class="glyphicon glyphicon-chevron-right"></span>
+			</h4>
+		</div>
+				<ul id="inheritance_diagram_svg" class="list-group panel-collapse collapse">
+			<div class="svg-container">
+				<svg fill-opacity="1" xmlns:xlink="http://www.w3.org/1999/xlink" color-rendering="auto" color-interpolation="auto" text-rendering="auto" stroke="black" stroke-linecap="square" width="1641" stroke-miterlimit="10" shape-rendering="auto" stroke-opacity="1" fill="black" stroke-dasharray="none" font-weight="normal" stroke-width="1" height="60" xmlns="http://www.w3.org/2000/svg" font-family="'Dialog'" font-style="normal" stroke-linejoin="miter" font-size="12px" stroke-dashoffset="0" image-rendering="auto"
+><!--Generated using AMIQ DVT/Specador--><defs id="genericDefs"
+  /><g
+  ><g fill="rgb(249,249,210)" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(249,249,210)"
+    ><rect x="1309" y="12" width="320" href="amiq_ofc_pkg-amiq_ofc_driver.html" id="rect_1" height="36" stroke="none"
+    /></g
+    ><g stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"
+    ><rect fill="none" x="1309" width="320" height="36" y="12"
+      /><text x="1313" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_1" lengthAdjust="spacingAndGlyphs" textLength="312px" xml:space="preserve"
+      >  amiq_ofc_driver &lt;IF&gt;  </text
+      ><rect x="956" y="12" fill="white" width="333" id="rect_2" height="36" stroke="none"
+      /><rect fill="none" x="956" width="333" height="36" y="12"
+      /><text x="960" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_2" lengthAdjust="spacingAndGlyphs" textLength="325px" xml:space="preserve"
+      >  uvm_driver &lt;REQ, RSP&gt;  </text
+      ><rect x="707" y="12" fill="white" width="229" id="rect_3" height="36" stroke="none"
+      /><rect fill="none" x="707" width="229" height="36" y="12"
+      /><text x="711" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_3" lengthAdjust="spacingAndGlyphs" textLength="221px" xml:space="preserve"
+      >  uvm_component  </text
+      ><rect x="406" y="12" fill="white" width="281" id="rect_4" height="36" stroke="none"
+      /><rect fill="none" x="406" width="281" height="36" y="12"
+      /><text x="410" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_4" lengthAdjust="spacingAndGlyphs" textLength="273px" xml:space="preserve"
+      >  uvm_report_object  </text
+      ><rect x="196" y="12" fill="white" width="190" id="rect_5" height="36" stroke="none"
+      /><rect fill="none" x="196" width="190" height="36" y="12"
+      /><text x="200" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_5" lengthAdjust="spacingAndGlyphs" textLength="182px" xml:space="preserve"
+      >  uvm_object  </text
+      ><rect x="12" y="12" fill="white" width="164" id="rect_6" height="36" stroke="none"
+      /><rect fill="none" x="12" width="164" height="36" y="12"
+      /><text x="16" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_6" lengthAdjust="spacingAndGlyphs" textLength="156px" xml:space="preserve"
+      >  uvm_void  </text
+      ><line y2="30" fill="none" x1="1308" x2="1293" y1="30"
+      /><polygon fill="white" points=" 1297 25 1290 30 1297 35" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 1297 25 1290 30 1297 35"
+      /><line y2="30" fill="none" x1="955" x2="940" y1="30"
+      /><polygon fill="white" points=" 944 25 937 30 944 35" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 944 25 937 30 944 35"
+      /><line y2="30" fill="none" x1="706" x2="691" y1="30"
+      /><polygon fill="white" points=" 695 25 688 30 695 35" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 695 25 688 30 695 35"
+      /><line y2="30" fill="none" x1="405" x2="390" y1="30"
+      /><polygon fill="white" points=" 394 25 387 30 394 35" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 394 25 387 30 394 35"
+      /><line y2="30" fill="none" x1="195" x2="180" y1="30"
+      /><polygon fill="white" points=" 184 25 177 30 184 35" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 184 25 177 30 184 35"
+    /></g
+  ></g
+></svg
+>
+
+			</div><br><a href="vlog-svg-legend-classes.html"><span class="label label-primary">Legend</span></a><br>
+		</ul>
+
+	</div>
+	<div class="panel panel-default">
+		<div id="collaboration_diagram_svg_container" class="panel-heading" data-toggle="collapse" data-target="#collaboration_diagram_svg">
+			<h4 class="panel-title">
+					Collaboration Diagram <span class="glyphicon glyphicon-chevron-right"></span>
+			</h4>
+		</div>
+				<ul id="collaboration_diagram_svg" class="list-group panel-collapse collapse">
+			<div class="svg-container">
+				<svg fill-opacity="1" xmlns:xlink="http://www.w3.org/1999/xlink" color-rendering="auto" color-interpolation="auto" text-rendering="auto" stroke="black" stroke-linecap="square" width="1369" stroke-miterlimit="10" shape-rendering="auto" stroke-opacity="1" fill="black" stroke-dasharray="none" font-weight="normal" stroke-width="1" height="380" xmlns="http://www.w3.org/2000/svg" font-family="'Dialog'" font-style="normal" stroke-linejoin="miter" font-size="12px" stroke-dashoffset="0" image-rendering="auto"
+><!--Generated using AMIQ DVT/Specador--><defs id="genericDefs"
+  /><g
+  ><g fill="rgb(249,249,210)" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(249,249,210)"
+    ><rect x="944" y="332" width="320" href="amiq_ofc_pkg-amiq_ofc_driver.html" id="rect_1" height="36" stroke="none"
+    /></g
+    ><g stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"
+    ><rect fill="none" x="944" width="320" height="36" y="332"
+      /><text x="948" font-size="27px" y="359" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_1" lengthAdjust="spacingAndGlyphs" textLength="312px" xml:space="preserve"
+      >  amiq_ofc_driver &lt;IF&gt;  </text
+      ><rect x="575" y="236" fill="white" width="333" id="rect_2" height="36" stroke="none"
+      /><rect fill="none" x="575" width="333" height="36" y="236"
+      /><text x="579" font-size="27px" y="263" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_2" lengthAdjust="spacingAndGlyphs" textLength="325px" xml:space="preserve"
+      >  uvm_driver &lt;REQ, RSP&gt;  </text
+      ><rect x="627" y="180" fill="white" width="229" id="rect_3" height="36" stroke="none"
+      /><rect fill="none" x="627" width="229" height="36" y="180"
+      /><text x="631" font-size="27px" y="207" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_3" lengthAdjust="spacingAndGlyphs" textLength="221px" xml:space="preserve"
+      >  uvm_component  </text
+      ><rect x="601" y="124" fill="white" width="281" id="rect_4" height="36" stroke="none"
+      /><rect fill="none" x="601" width="281" height="36" y="124"
+      /><text x="605" font-size="27px" y="151" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_4" lengthAdjust="spacingAndGlyphs" textLength="273px" xml:space="preserve"
+      >  uvm_report_object  </text
+      ><rect x="646" y="68" fill="white" width="190" id="rect_5" height="36" stroke="none"
+      /><rect fill="none" x="646" width="190" height="36" y="68"
+      /><text x="650" font-size="27px" y="95" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_5" lengthAdjust="spacingAndGlyphs" textLength="182px" xml:space="preserve"
+      >  uvm_object  </text
+      ><rect x="659" y="12" fill="white" width="164" id="rect_6" height="36" stroke="none"
+      /><rect fill="none" x="659" width="164" height="36" y="12"
+      /><text x="663" font-size="27px" y="39" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_6" lengthAdjust="spacingAndGlyphs" textLength="156px" xml:space="preserve"
+      >  uvm_void  </text
+      ><rect x="1011" y="180" fill="white" width="346" href="amiq_ofc_pkg-amiq_ofc_driver_config.html" id="rect_7" height="36" stroke="none"
+      /><rect fill="none" x="1011" width="346" height="36" y="180"
+      /><text x="1015" font-size="27px" y="207" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_7" lengthAdjust="spacingAndGlyphs" textLength="338px" xml:space="preserve"
+      >  amiq_ofc_driver_config  </text
+      ><rect x="196" y="180" fill="white" width="385" href="amiq_ofc_pkg-amiq_ofc_server_connector.html" id="rect_8" height="36" stroke="none"
+      /><rect fill="none" x="196" width="385" height="36" y="180"
+      /><text x="200" font-size="27px" y="207" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_8" lengthAdjust="spacingAndGlyphs" textLength="377px" xml:space="preserve"
+      >  amiq_ofc_server_connector  </text
+      ><rect x="150" y="68" fill="white" width="476" href="amiq_ofc_pkg-amiq_ofc_server_connector_config.html" id="rect_9" height="36" stroke="none"
+      /><rect fill="none" x="150" width="476" height="36" y="68"
+      /><text x="154" font-size="27px" y="95" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_9" lengthAdjust="spacingAndGlyphs" textLength="468px" xml:space="preserve"
+      >  amiq_ofc_server_connector_config  </text
+      ><text x="928" font-size="24px" y="262" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="normal" rectid="rect_0" lengthAdjust="spacingAndGlyphs" textLength="252px" xml:space="preserve"
+      >  ofc_driver_config  </text
+      ><text x="300" font-size="24px" y="262" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="normal" rectid="rect_0" lengthAdjust="spacingAndGlyphs" textLength="84px" xml:space="preserve"
+      >  con  </text
+      ><text x="12" font-size="24px" y="150" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="normal" rectid="rect_0" lengthAdjust="spacingAndGlyphs" textLength="372px" xml:space="preserve"
+      >  ofc_server_connector_config  </text
+      ><path fill="none" d="M1104 331 L1104 292 L741 292 L741 276"
+      /><polygon fill="white" points=" 746 280 741 273 736 280" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 746 280 741 273 736 280"
+      /><line y2="220" fill="none" stroke-dasharray="18,9" x1="1184" x2="1184" y1="331"
+      /><polygon stroke-dasharray="18,9" points=" 1189 224 1184 217 1179 224" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 1189 224 1184 217 1179 224"
+      /><path stroke-dasharray="18,9" fill="none" d="M1024 331 L1024 312 L388 312 L388 220"
+      /><polygon stroke-dasharray="18,9" points=" 393 224 388 217 383 224" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 393 224 388 217 383 224"
+      /><line y2="220" fill="none" x1="741" x2="741" y1="235"
+      /><polygon fill="white" points=" 746 224 741 217 736 224" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 746 224 741 217 736 224"
+      /><line y2="164" fill="none" x1="741" x2="741" y1="179"
+      /><polygon fill="white" points=" 746 168 741 161 736 168" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 746 168 741 161 736 168"
+      /><line y2="108" fill="none" x1="741" x2="741" y1="123"
+      /><polygon fill="white" points=" 746 112 741 105 736 112" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 746 112 741 105 736 112"
+      /><line y2="52" fill="none" x1="741" x2="741" y1="67"
+      /><polygon fill="white" points=" 746 56 741 49 736 56" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 746 56 741 49 736 56"
+      /><line y2="108" fill="none" stroke-dasharray="18,9" x1="388" x2="388" y1="179"
+      /><polygon stroke-dasharray="18,9" points=" 393 112 388 105 383 112" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 393 112 388 105 383 112"
+    /></g
+  ></g
+></svg
+>
+
+			</div><br><a href="vlog-svg-legend-classes.html"><span class="label label-primary">Legend</span></a><br>
+		</ul>
+
+	</div>
+	<div class="panel panel-default">
+		<div id="direct_associations_diagram_svg_container" class="panel-heading" data-toggle="collapse" data-target="#direct_associations_diagram_svg">
+			<h4 class="panel-title">
+					Direct Associations Diagram <span class="glyphicon glyphicon-chevron-right"></span>
+			</h4>
+		</div>
+				<ul id="direct_associations_diagram_svg" class="list-group panel-collapse collapse">
+			<div class="svg-container">
+				<svg fill-opacity="1" xmlns:xlink="http://www.w3.org/1999/xlink" color-rendering="auto" color-interpolation="auto" text-rendering="auto" stroke="black" stroke-linecap="square" width="1041" stroke-miterlimit="10" shape-rendering="auto" stroke-opacity="1" fill="black" stroke-dasharray="none" font-weight="normal" stroke-width="1" height="132" xmlns="http://www.w3.org/2000/svg" font-family="'Dialog'" font-style="normal" stroke-linejoin="miter" font-size="12px" stroke-dashoffset="0" image-rendering="auto"
+><!--Generated using AMIQ DVT/Specador--><defs id="genericDefs"
+  /><g
+  ><g fill="rgb(249,249,210)" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(249,249,210)"
+    ><rect x="12" y="34" width="320" href="amiq_ofc_pkg-amiq_ofc_driver.html" id="rect_1" height="36" stroke="none"
+    /></g
+    ><g stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"
+    ><rect fill="none" x="12" width="320" height="36" y="34"
+      /><text x="16" font-size="27px" y="61" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_1" lengthAdjust="spacingAndGlyphs" textLength="312px" xml:space="preserve"
+      >  amiq_ofc_driver &lt;IF&gt;  </text
+      ><rect x="644" y="84" fill="white" width="346" href="amiq_ofc_pkg-amiq_ofc_driver_config.html" id="rect_2" height="36" stroke="none"
+      /><rect fill="none" x="644" width="346" height="36" y="84"
+      /><text x="648" font-size="27px" y="111" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_2" lengthAdjust="spacingAndGlyphs" textLength="338px" xml:space="preserve"
+      >  amiq_ofc_driver_config  </text
+      ><rect x="644" y="28" fill="white" width="385" href="amiq_ofc_pkg-amiq_ofc_server_connector.html" id="rect_3" height="36" stroke="none"
+      /><rect fill="none" x="644" width="385" height="36" y="28"
+      /><text x="648" font-size="27px" y="55" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="bold" rectid="rect_3" lengthAdjust="spacingAndGlyphs" textLength="377px" xml:space="preserve"
+      >  amiq_ofc_server_connector  </text
+      ><text x="372" font-size="24px" y="88" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="normal" rectid="rect_0" lengthAdjust="spacingAndGlyphs" textLength="252px" xml:space="preserve"
+      >  ofc_driver_config  </text
+      ><text x="456" font-size="24px" y="32" font-family="'Ubuntu Mono'" font-style="normal" stroke="none" font-weight="normal" rectid="rect_0" lengthAdjust="spacingAndGlyphs" textLength="84px" xml:space="preserve"
+      >  con  </text
+      ><path stroke-dasharray="18,9" fill="none" d="M333 58 L352 58 L352 102 L640 102"
+      /><polygon stroke-dasharray="18,9" points=" 636 107 643 102 636 97" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 636 107 643 102 636 97"
+      /><line y2="46" fill="none" stroke-dasharray="18,9" x1="333" x2="640" y1="46"
+      /><polygon stroke-dasharray="18,9" points=" 636 51 643 46 636 41" stroke="none"
+      /><polygon stroke-linecap="round" fill="none" points=" 636 51 643 46 636 41"
+    /></g
+  ></g
+></svg
+>
+
+			</div><br><a href="vlog-svg-legend-classes.html"><span class="label label-primary">Legend</span></a><br>
+		</ul>
+
+	</div>
+
+
+<!-- ========= Generated From ======= -->
+		<hr>Generated from: <a href="../../amiq_sv_ofc/amiq_ofc_driver.svh">amiq_ofc_driver.svh</a>
+
+
+	</div>
+
+	<div class="footer">
+		<hr><p class="text-center">Generated by <b>ioacri</b> on Mon Feb 08 17:50:53 EET 2021 using <a href="http://www.dvteclipse.com/" target="_new">Specador<sup>TM</sup></a> Version 21.1.5</p>
+    </div>
+
+	
+	<script src="lib/jquery/js/jquery.js"></script>
+	<script src="lib/jquery/js/jquery.scrollUp.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.js"></script>
+	<script src="lib/svg-pan-zoom/js/svg-pan-zoom.js"></script>
+	<script src="lib/wavedrom/js/wavedrom.min.js"></script>
+	<script src="lib/wavedrom/js/narrow.js"></script>
+	<script src="lib/wavedrom/js/default.js"></script>
+	<script src="lib/wavedrom/js/lowkey.js"></script>
+	<script src="js/content.js"></script>
+	<script src="js/custom.js"></script>
+	
+	
+	</body>
+</html>
+
+

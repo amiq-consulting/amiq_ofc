@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>amiq_ofc_item &mdash; AMIQ OFC 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AMIQ OFC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_python_server.html">AMIQ OFC Python Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_python_fpga_connector.html">AMIQ OFC Python FPGA Connector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_buffers.html">AMIQ OFC Buffers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amiq_ofc_item.html">AMIQ OFC Item</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AMIQ OFC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>amiq_ofc_item</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for amiq_ofc_item</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   (C) Copyright 2021 AMIQ Consulting</span>
+<span class="sd">  </span>
+<span class="sd">   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="sd">   you may not use this file except in compliance with the License.</span>
+<span class="sd">   You may obtain a copy of the License at</span>
+<span class="sd">  </span>
+<span class="sd">   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="sd">  </span>
+<span class="sd">   Unless required by applicable law or agreed to in writing, software</span>
+<span class="sd">   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="sd">   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="sd">   See the License for the specific language governing permissions and</span>
+<span class="sd">   limitations under the License.</span>
+<span class="sd">  </span>
+<span class="sd">   MODULE:      amiq_ofc_item</span>
+<span class="sd">   PROJECT:     Amiq Open-Source Framework for Co-Emulation</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">##########################################################################################################################    </span>
+<span class="c1">######################################################## Item Class ######################################################</span>
+<span class="c1">##########################################################################################################################</span>
+<span class="kn">import</span> <span class="nn">abc</span>
+
+<div class="viewcode-block" id="amiq_ofc_item"><a class="viewcode-back" href="../amiq_ofc_item.html#amiq_ofc_item.amiq_ofc_item">[docs]</a><span class="k">class</span> <span class="nc">amiq_ofc_item</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>    
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         The item class is used to derive specific items</span>
+<span class="sd">         </span>
+<span class="sd">         - The derived classes should have the same name as the DMA</span>
+<span class="sd">         from the PL side used to transfer them</span>
+<span class="sd">         - They should also have the two abstract methods defined: </span>
+<span class="sd">               * set_fields()</span>
+<span class="sd">               * pack_data()</span>
+<span class="sd">               </span>
+<span class="sd">        @see abc.ABCMeta</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+
+<div class="viewcode-block" id="amiq_ofc_item.pack_data"><a class="viewcode-back" href="../amiq_ofc_item.html#amiq_ofc_item.amiq_ofc_item.pack_data">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">pack_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            This method will be used to send data to the DMA modules</span>
+<span class="sd">            </span>
+<span class="sd">            @param self: The OFC item containing the pack_data() function</span>
+<span class="sd">            @type self: amiq_ofc_item</span>
+<span class="sd">            </span>
+<span class="sd">            @return: This function should return the integer correspondent for sending to the DMA modules</span>
+<span class="sd">            @rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+    
+<div class="viewcode-block" id="amiq_ofc_item.unpack_data"><a class="viewcode-back" href="../amiq_ofc_item.html#amiq_ofc_item.amiq_ofc_item.unpack_data">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">unpack_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">            This function will be used to send data back to the client</span>
+<span class="sd">            </span>
+<span class="sd">            @param self: The OFC item containing the unpack_data() function</span>
+<span class="sd">            @type self: amiq_ofc_item</span>
+<span class="sd">            @param data: The data that should be unpacked</span>
+<span class="sd">            @type data: int</span>
+<span class="sd">            </span>
+<span class="sd">            @return: This function should return a string corresponding to the item</span>
+<span class="sd">            @rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, AMIQ Consulting
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
