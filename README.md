@@ -1,3 +1,5 @@
-This repository contains both SV and Python sides of the OFC framework.
+# AMIQ OFC - Open-Source Framework for Co-Emulation using PYNQ
 
-For more information read the documentations that you can find in the docs/ directory.
+This repository contains both SystemVerilog and Python code for the OFC framework.
+
+For more information read the documentations provided in the docs/ directory.
